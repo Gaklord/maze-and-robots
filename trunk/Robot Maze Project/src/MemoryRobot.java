@@ -1,5 +1,3 @@
-package Mazen;
-
 public  class MemoryRobot extends Robot {
 	
 	
