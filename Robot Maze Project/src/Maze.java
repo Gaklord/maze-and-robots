@@ -62,6 +62,26 @@ public class Maze {
 		
 	}
 	
+	public position findb()
+	{
+		int i, j;
+		
+		position entrance;
+		
+		for(i = 0; i < 9; i++)
+		{
+			for(j = 0; j < 9; j++)
+			{
+				if(ver[i][j] == 'o')
+					return entrance = new position(i, j);
+				
+			}
+			
+		}
+		System.err.println("No entrance found, Fuck you");
+		System.exit(1);
+	}
+	
 	private char[][] ver = new char[9][9];
 	
 	public static final int POINT_ENTRANCE = 0;
