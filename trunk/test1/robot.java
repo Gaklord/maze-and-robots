@@ -5,6 +5,7 @@ public class robot
 	int direction = 0; 
 	
 	//Mike you are a stupid Faggot...
+	//am i rob?
 	
 	public void Move( Maze m )
 	{
