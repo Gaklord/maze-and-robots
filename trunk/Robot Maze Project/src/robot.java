@@ -22,7 +22,7 @@ public class robot
 	
 	protected position getStart(position begin) // what do we put here?
 	{
-		position start = new position();
+		position start = new position(map.position);
 		
 		//returns a position that is the entrance to the maze
 		
