@@ -100,13 +100,13 @@ public class Maze {
 			return -1; 
 		}
 		if(ver[x][y] == 'o')
-			return(0);
+			return POINT_ENTRANCE;
 		else if (ver[x][y] == ' ')
-			return 1;
+			return POINT_SPACE;
 		else if (ver[x][y] == '*')
-			return 2;
+			return POINT_WALL;
 		else if (ver[x][y] == 'x')
-			return 3;
+			return POINT_EXIT;
 		else
 			System.err.println("Not valid Character, Fuck you.");
 			return -2;
