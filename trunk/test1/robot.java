@@ -6,8 +6,11 @@ public class robot
 	
 	//Mike you are a stupid Faggot...
 	//am i rob?
+  //Yes you are
 	//testing again, this is on my desktop
+  //Dirty Whore Desktop
 	//testing again after not checking out
+  //At least put on a condom
 	
 	public void Move( Maze m )
 	{
