@@ -39,6 +39,7 @@ public class robot
 		else if (start.gety() == 8)
 			direction = DIR_WEST;
 		
+		return start;
 	}
 	
 	private int getDirection (position lasPos,position curPos)
