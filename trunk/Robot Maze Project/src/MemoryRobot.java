@@ -10,10 +10,10 @@ public  class MemoryRobot extends robot {
 	}
 	
 	
-	@Override
 	public void Move(Maze m)
 	{
 		//long timeout = System.currentTimeMillis();
+		memory.push(currentPosition);
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
 			lastPosition = currentPosition; 
