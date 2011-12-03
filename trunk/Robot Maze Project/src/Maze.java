@@ -49,11 +49,11 @@ public class Maze {
 		}
 		String data = sb.toString();
 		System.out.println( "Data: " + data );
-		for(i = 0; i < 9; i++)
+		for(i = 0; i < 11; i++)
 		{
-			for(j = 0; j < 9; j++)
+			for(j = 0; j < 11; j++)
 			{
-				ver[i][j] = data.charAt(i*9+j);  
+				ver[i][j] = data.charAt(i*11+j);  
 				System.out.print(ver[i][j]);
 			}
 			System.out.println();
@@ -68,9 +68,9 @@ public class Maze {
 		
 		position entrance, fail;
 		
-		for(i = 0; i < 9; i++)
+		for(i = 0; i < 11; i++)
 		{
-			for(j = 0; j < 9; j++)
+			for(j = 0; j < 11; j++)
 			{
 				if(ver[i][j] == 'o')
 				{
@@ -85,8 +85,31 @@ public class Maze {
 		System.exit(1);
 		return(fail = new position());
 	}
+	public position finde()
+	{
+		int i, j;
+		
+		position exit, fail;
+		
+		for(i = 0; i < 11; i++)
+		{
+			for(j = 0; j < 11; j++)
+			{
+				if(ver[i][j] == 'o')
+				{
+					exit = new position(i, j);
+					return exit;
+				}
+				
+			}
+			
+		}
+		System.err.println("No exit found, Fuck you");
+		System.exit(1);
+		return(fail = new position());
+	}
 	
-	private char[][] ver = new char[9][9];
+	private char[][] ver = new char[11][11];
 	
 	public static final int POINT_ENTRANCE = 0;
 	public static final int POINT_SPACE = 1;
@@ -95,19 +118,20 @@ public class Maze {
 	
 	public int CheckPos(int x, int y)
 	{
-		if(x < 0 && x >= 9 && y < 0 && y >= 9)
+	/*	if(x < 0 && x >= 11 && y < 0 && y >= 11)
 		{
 			System.err.println("Out of bounds, fuck you");
 			return -1; 
 		}
+	*/
 		if(ver[x][y] == 'o')
-			return POINT_ENTRANCE;
+			return 0;
 		else if (ver[x][y] == ' ')
-			return POINT_SPACE;
+			return 1;
 		else if (ver[x][y] == '*')
-			return POINT_WALL;
+			return 2;
 		else if (ver[x][y] == 'x')
-			return POINT_EXIT;
+			return 3;
 		else
 			System.err.println("Not valid Character, Fuck you.");
 			return -2;
