@@ -66,20 +66,24 @@ public class Maze {
 	{
 		int i, j;
 		
-		position entrance;
+		position entrance, fail;
 		
 		for(i = 0; i < 9; i++)
 		{
 			for(j = 0; j < 9; j++)
 			{
 				if(ver[i][j] == 'o')
-					return entrance = new position(i, j);
+				{
+					entrance = new position(i, j);
+					return entrance;
+				}
 				
 			}
 			
 		}
 		System.err.println("No entrance found, Fuck you");
 		System.exit(1);
+		return(fail = new position());
 	}
 	
 	private char[][] ver = new char[9][9];
