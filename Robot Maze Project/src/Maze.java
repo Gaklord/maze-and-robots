@@ -118,19 +118,19 @@ public class Maze {
 	
 	public int CheckPos(int x, int y)
 	{
-	/*	if(x < 0 && x >= 11 && y < 0 && y >= 11)
+		if(x < 0 && x >= 11 && y < 0 && y >= 11)
 		{
 			System.err.println("Out of bounds, fuck you");
 			return -1; 
 		}
-	*/
-		if(ver[x][y] == 'o')
+	
+		if(ver[y][x] == 'o')
 			return 0;
-		else if (ver[x][y] == ' ')
+		else if (ver[y][x] == ' ')
 			return 1;
-		else if (ver[x][y] == '*')
+		else if (ver[y][x] == '*')
 			return 2;
-		else if (ver[x][y] == 'x')
+		else if (ver[y][x] == 'x')
 			return 3;
 		else
 			System.err.println("Not valid Character, Fuck you.");
