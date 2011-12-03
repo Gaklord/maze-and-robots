@@ -15,29 +15,31 @@ public  class MemoryRobot extends robot {
 	{
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
+			lastPosition = currentPosition; 
 			if(m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()))
 			{
 				memory.push(lastPosition);
 				currentPosition.modify(0, 1);
 			}
-			else if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1)
+			else if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()))
 			{
 				memory.push(lastPosition);
 				currentPosition.modify(1, 0);
 			}
-			else if(m.CheckPos(currentPosition.getx(), currentPosition.gety() -1) == 1)
+			else if(m.CheckPos(currentPosition.getx(), currentPosition.gety() -1) == 1 && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()))
 			{
 				memory.push(lastPosition);
 				currentPosition.modify(0, -1);
 			}
-			else if(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1)
+			else if(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()))
 			{
 				memory.push(lastPosition);
 				currentPosition.modify(-1, 0);
 			}
 			else
 			{
-				
+				lastresort.push(currentPosition);
+				memory.pop();
 			}
 			
 		
