@@ -20,7 +20,7 @@ public class robot
 		direction = getDirection( lastPosition, currentPosition );
 	}
 	
-	protected position getStart(???) // what do we put here?
+	protected position getStart(/*???*/) // what do we put here?
 	{
 		position start = new position();
 		
