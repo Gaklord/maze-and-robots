@@ -4,7 +4,7 @@ public class robot
 	protected position lastPosition;
 	int direction = 0; 
 	
-	
+	//Mike you are a stupid Faggot...
 	
 	public void Move( Maze m )
 	{
