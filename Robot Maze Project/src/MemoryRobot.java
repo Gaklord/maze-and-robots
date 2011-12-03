@@ -13,6 +13,7 @@ public  class MemoryRobot extends robot {
 	@Override
 	public void Move(Maze m)
 	{
+		long timeout = System.currentTimeMillis();
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
 			lastPosition = currentPosition; 
@@ -42,6 +43,7 @@ public  class MemoryRobot extends robot {
 				memory.pop();
 			}
 			
+			System.out.printf("Took Memory Robot " + ((System.currentTimeMillis() - timeout) / 1000)); 
 		
 		}
 	}
