@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class RandomRobot extends Robot {
+public class RandomRobot extends robot {
 
 	
 	int x = 0, y = 0;

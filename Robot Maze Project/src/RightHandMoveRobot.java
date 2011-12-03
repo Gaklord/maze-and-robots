@@ -19,7 +19,7 @@ public class RightHandMoveRobot extends robot {
 	}
 	private boolean isEnd()
 	{
-		if (position == end)
+		if (curPos == end)
 			return true;
 		else return false;
 		
