@@ -21,7 +21,7 @@ public class robot
 		direction = getDirection( lastPosition, currentPosition );
 	}
 	
-	protected position getStart(position begin) // what do we put here?
+	/*protected position getStart(position begin) // what do we put here?
 	{
 		position start = new position(map.position);
 		
@@ -41,7 +41,7 @@ public class robot
 			direction = DIR_WEST;
 		
 		return start;
-	}
+	} */
 	
 	private int getDirection (position lasPos,position curPos)
 	{

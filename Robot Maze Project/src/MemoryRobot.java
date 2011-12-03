@@ -13,14 +13,16 @@ public  class MemoryRobot extends robot {
 	public void Move(Maze m)
 	{
 		//long timeout = System.currentTimeMillis();
-		memory.push(currentPosition);
+		memory.add(currentPosition);
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
-			lastPosition = currentPosition; 
+			lastPosition = currentPosition;
+			System.out.println("Made it past here");
 			if(m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()))
 			{
 				memory.push(lastPosition);
 				currentPosition.modify(0, 1);
+				
 			}
 			else if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 && ((futurePosition = new position(currentPosition.getx()+1, currentPosition.gety())) != memory.peek()))
 			{
@@ -64,7 +66,7 @@ public  class MemoryRobot extends robot {
 	
 	
 	
-	private Stack<position> memory;
-	private Stack<position> lastresort;
+	private Stack<position> memory = new Stack<position>();
+	private Stack<position> lastresort = new Stack<position>();
 	
 }
