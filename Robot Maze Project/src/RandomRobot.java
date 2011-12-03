@@ -1,5 +1,3 @@
-package Mazen;
-
 import java.util.Map;
 
 public class RandomRobot extends Robot {
