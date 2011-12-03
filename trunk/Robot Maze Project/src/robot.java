@@ -2,6 +2,7 @@ public class robot
 {
 	protected position currentPosition;
 	protected position lastPosition;
+	protected position futurePosition;
 	int direction = 0; 
 	public static final int DIR_NORTH = 0;
 	public static final int DIR_SOUTH = 2;

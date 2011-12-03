@@ -6,6 +6,7 @@ public  class MemoryRobot extends robot {
 	public MemoryRobot(Maze m)
 	{
 		currentPosition = m.findb();
+		futurePosition = m.findb();
 	}
 	
 	
@@ -14,24 +15,24 @@ public  class MemoryRobot extends robot {
 	{
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
-			if(m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 && (currentPosition != memory.peek()))
+			if(m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 && (futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()+1) != memory.peek())
 			{
-				memory.push(new position(currentPosition.getx(), currentPosition.gety()));
+				memory.push(lastPosition);
 				currentPosition.modify(0, 1);
 			}
 			else if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1)
 			{
-				memory.push(new position(currentPosition.getx(), currentPosition.gety()));
+				memory.push(lastPosition);
 				currentPosition.modify(1, 0);
 			}
 			else if(m.CheckPos(currentPosition.getx(), currentPosition.gety() -1) == 1)
 			{
-				memory.push(new position(currentPosition.getx(), currentPosition.gety()));
+				memory.push(lastPosition);
 				currentPosition.modify(0, -1);
 			}
 			else if(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1)
 			{
-				memory.push(new position(currentPosition.getx(), currentPosition.gety()));
+				memory.push(lastPosition);
 				currentPosition.modify(-1, 0);
 			}
 			else
@@ -54,7 +55,7 @@ public  class MemoryRobot extends robot {
 	
 	
 	
-	private Stack<position> memory = new Stack();
-
+	private Stack<position> memory;
+	private Stack<position> lastresort;
 	
 }

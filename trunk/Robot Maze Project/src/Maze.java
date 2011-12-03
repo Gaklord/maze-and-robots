@@ -92,6 +92,7 @@ public class Maze {
 	public static final int POINT_SPACE = 1;
 	public static final int POINT_WALL = 2;
 	public static final int POINT_EXIT = 3;
+	
 	public int CheckPos(int x, int y)
 	{
 		if(x >= 0 && x < 9 && y >= 0 && y < 9)
