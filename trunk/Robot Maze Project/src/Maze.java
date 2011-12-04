@@ -118,7 +118,7 @@ public class Maze {
 	
 	public int CheckPos(int x, int y)
 	{
-		if(x < 0 && x >= 11 && y < 0 && y >= 11)
+		if(x < 0 || x > 10 || y < 0 || y > 10)
 		{
 			System.err.println("Out of bounds, fuck you");
 			return -1; 
