@@ -18,7 +18,7 @@ public  class MemoryRobot extends robot {
 		{
 			lastPosition = currentPosition;
 			System.out.println("Made it past here");
-			if((m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3) && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()))
+			if((m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3) &&( (((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)).getx() != memory.peek().getx()) && futurePosition.gety() != memory.peek().gety())) )
 			{
 				memory.push(lastPosition);
 				currentPosition.modify(0, 1);
