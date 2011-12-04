@@ -12,40 +12,59 @@ public  class MemoryRobot extends robot {
 	
 	public void Move(Maze m)
 	{
+		int x = 1;
 		//long timeout = System.currentTimeMillis();
 		memory.push(currentPosition);
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
-			lastPosition = currentPosition;
-			System.out.println("Made it past here");
-			if((m.CheckPos(currentPosition.getx(), currentPosition.gety() + 1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3) &&( (((futurePosition = new position(currentPosition.getx(), currentPosition.gety()+1)) != memory.peek()) && futurePosition.gety() != memory.peek().gety())) )
+			
+			while(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx() +1, currentPosition.gety()) == 3)
 			{
-				memory.push(lastPosition);
-				currentPosition.modify(0, 1);
-				
+				futurePosition.setPosition(currentPosition.getx()+1, currentPosition.gety());
+				if(futurePosition.getx() != memory.peek().getx() && futurePosition.gety() != memory.peek().gety())
+				{
+					memory.push(currentPosition); 
+					currentPosition.modify(1, 0);
+					x = 0;
+				}
 			}
-			else if((m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 3) && ((futurePosition = new position(currentPosition.getx()+1, currentPosition.gety())) != memory.peek()))
+			while(m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3)
 			{
-				memory.push(lastPosition);
-				currentPosition.modify(1, 0);
+				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()+1);
+				if(futurePosition.getx() != memory.peek().getx() && futurePosition.gety() != memory.peek().gety())
+				{
+					memory.push(currentPosition); 
+					currentPosition.modify(0, 1);
+					x = 0;
+				}
 			}
-			else if((m.CheckPos(currentPosition.getx(), currentPosition.gety() -1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 3) && ((futurePosition = new position(currentPosition.getx(), currentPosition.gety()-1)) != memory.peek()))
+			while(m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 3)
 			{
-				memory.push(lastPosition);
-				currentPosition.modify(0, -1);
+				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()-1);
+				if(futurePosition.getx() != memory.peek().getx() && futurePosition.gety() != memory.peek().gety())
+				{
+					memory.push(currentPosition); 
+					currentPosition.modify(0, -1);
+					x = 0;
+				}
 			}
-			else if((m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 3) && ((futurePosition = new position(currentPosition.getx()-1, currentPosition.gety())) != memory.peek()))
+			while(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 3)
 			{
-				memory.push(lastPosition);
-				currentPosition.modify(-1, 0);
+				futurePosition.setPosition(currentPosition.getx()-1, currentPosition.gety());
+				if(futurePosition.getx() != memory.peek().getx() && futurePosition.gety() != memory.peek().gety())
+				{
+					memory.push(currentPosition); 
+					currentPosition.modify(-1, 0);
+					x = 0;
+				}
 			}
-			else
+			if(x == 1)
 			{
 				lastresort.push(currentPosition);
-				memory.pop();
-				memory.push(lastresort.peek());
+				
 			}
 			
+			x = 1;
 //			System.out.printf("Took Memory Robot " + ((System.currentTimeMillis() - timeout) / 1000)); 
 		
 		}
