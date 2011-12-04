@@ -13,7 +13,7 @@ public  class MemoryRobot extends robot {
 	public void Move(Maze m)
 	{
 		int x = 1;
-		//long timeout = System.currentTimeMillis();
+		//long signout = System.currentTimeMillis();
 		memory.push(currentPosition);
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
