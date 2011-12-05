@@ -35,4 +35,17 @@ public class position
 		x = a;
 		y = b;
 	}
+	public int check(Maze m, int direction)
+	{
+		switch (direction)
+		{
+		case 0: return m.CheckPos(x, y-1);
+		case 1: return m.CheckPos(x+1, y);
+		case 2: return m.CheckPos(x, y+1);
+		case 3: return m.CheckPos(x-1, y);
+		default:System.err.println("Something bad happened trying to check the next move!");System.exit(-83);break;
+		}
+		return -2; //you really shouldent be able to get here
+	}
 }
+	
