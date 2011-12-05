@@ -21,7 +21,7 @@ public  class MemoryRobot extends robot {
 		{
 			memorypos = memory.peek();
 			lastPosition = lastresort.peek();
-			while(m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3)
+			if(m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()+1);
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
@@ -30,9 +30,8 @@ public  class MemoryRobot extends robot {
 					currentPosition.modify(0, 1);
 					x = 0;
 				}
-				
 			}
-			while(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 3)
+			else if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx()+1, currentPosition.gety());
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
@@ -42,9 +41,8 @@ public  class MemoryRobot extends robot {
 					currentPosition.modify(1, 0);
 					x = 0;
 				}
-				
 			}
-			while(m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 3)
+			else if(m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()-1);
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
@@ -56,7 +54,7 @@ public  class MemoryRobot extends robot {
 				}
 				
 			}
-			while(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 3)
+			else if(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx()-1, currentPosition.gety());
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
@@ -66,9 +64,9 @@ public  class MemoryRobot extends robot {
 					currentPosition.modify(-1, 0);
 					x = 0;
 				}
-				
+				break;
 			}
-			if(x == 1)
+			else
 			{
 				lastresort.push(currentPosition);
 				memory.pop();
