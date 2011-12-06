@@ -28,7 +28,10 @@ public class RightHandMoveRobot extends robot {
 				case (DIR_WEST):if (m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 2) wall = DIR_NORTH;else currentPosition.modify(0, -1);break;
 				default:System.err.println("HERE BE DRAGONS"); System.exit(-82);//self terminates if robot is looking a wrong way
 				}
-			System.out.println(currentPosition.getx() + currentPosition.gety());
+			System.out.print(currentPosition.getx());
+			System.out.println(" " + currentPosition.gety());
+			System.out.println(m.CheckPos(7,8));
+			//System.out.println(m.CheckPos(7,8));
 			switch (wall)
 			{
 			case (DIR_NORTH):
