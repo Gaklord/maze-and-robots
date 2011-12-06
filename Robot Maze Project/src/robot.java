@@ -37,7 +37,21 @@ public class robot
 		return start;
 	} */
 	
-
+	private int getDirection (position lasPos,position curPos)
+	{
+		int xdif = curPos.getx() - lasPos.getx();
+		int ydif = curPos.gety() - lasPos.gety();
+		if (xdif > 0)
+			return DIR_EAST;
+		else if(xdif < 0)
+			return DIR_WEST;
+		else if(ydif > 0)
+			return DIR_SOUTH;
+		else if(ydif < 0)
+			return DIR_NORTH;
+		System.err.println("I'm Stuck!");
+		return -1; // both positions are the same
+	}
 	
 
 	
