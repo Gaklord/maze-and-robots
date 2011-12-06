@@ -59,7 +59,6 @@ public class RandomRobot extends robot {
 				
 			}
 			Moves++;
-			System.out.println(Moves);
 		}
 		System.out.println("Took Memory Robot " + ((System.currentTimeMillis() - signout) / 1000 + "Seconds!"));
 		System.out.println("Took " + Moves + " Moves");
