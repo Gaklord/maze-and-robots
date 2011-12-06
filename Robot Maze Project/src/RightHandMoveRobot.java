@@ -5,7 +5,6 @@ public class RightHandMoveRobot extends robot {
 		currentPosition = m.findb();
 		futurePosition = m.findb();
 	}
-	@Override
 	public void Move(Maze m)
 	{
 		position currentPosition = m.findb();
@@ -29,12 +28,53 @@ public class RightHandMoveRobot extends robot {
 				case (DIR_WEST):if (m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 2) wall = DIR_NORTH;else currentPosition.modify(0, -1);break;
 				default:System.err.println("HERE BE DRAGONS"); System.exit(-82);//self terminates if robot is looking a wrong way
 				}
+			System.out.println(currentPosition.getx() + currentPosition.gety());
 			switch (wall)
 			{
-			case (DIR_NORTH):if ((currentPosition.check(m, DIR_WEST) == 1 || currentPosition.check(m, DIR_WEST) == 3))currentPosition.modify(-1, 0);else if (currentPosition.check(m, DIR_WEST) == 2) wall = DIR_WEST;break;    //move towards 3, subtract from the x value
-			case (DIR_EAST):if ((currentPosition.check(m, DIR_NORTH) == 1 || currentPosition.check(m, DIR_NORTH) == 3))currentPosition.modify(0, -1);else if (currentPosition.check(m, DIR_NORTH) == 2) wall = DIR_NORTH;break;
-			case (DIR_SOUTH):if ((currentPosition.check(m, DIR_EAST) == 1 || currentPosition.check(m, DIR_EAST) == 3))currentPosition.modify(1, 0);else if (currentPosition.check(m, DIR_EAST) == 2) wall = DIR_EAST;break;
-			case (DIR_WEST):if ((currentPosition.check(m, DIR_SOUTH) == 1 || currentPosition.check(m, DIR_SOUTH) == 3))currentPosition.modify(0, 1);else if (currentPosition.check(m, DIR_SOUTH) == 2) wall = DIR_SOUTH;break;
+			case (DIR_NORTH):
+				if ((currentPosition.check(m, DIR_WEST) == 1 || currentPosition.check(m, DIR_WEST) == 3))
+					{
+					currentPosition.modify(-1, 0);
+					break;
+					}
+				else if (currentPosition.check(m, DIR_WEST) == 2 || currentPosition.check(m, DIR_WEST) == 0) 
+					{
+					wall = DIR_WEST;
+					break;    //move towards 3, subtract from the x value
+					}
+			case (DIR_EAST):
+				if ((currentPosition.check(m, DIR_NORTH) == 1 || currentPosition.check(m, DIR_NORTH) == 3))
+					{
+					currentPosition.modify(0, -1);
+					break;
+					}
+				else if (currentPosition.check(m, DIR_NORTH) == 2 || currentPosition.check(m, DIR_NORTH) == 0)
+					{
+					wall = DIR_NORTH;
+					break;
+					}
+			case (DIR_SOUTH):
+				if ((currentPosition.check(m, DIR_EAST) == 1 || currentPosition.check(m, DIR_EAST) == 3))
+					{
+					currentPosition.modify(1, 0);
+					break;
+					}
+				else if (currentPosition.check(m, DIR_EAST) == 2 || currentPosition.check(m, DIR_EAST) == 0)
+					{
+					wall = DIR_EAST;
+					break;
+					}
+			case (DIR_WEST):
+				if ((currentPosition.check(m, DIR_SOUTH) == 1 || currentPosition.check(m, DIR_SOUTH) == 3))
+					{
+					currentPosition.modify(0, 1);
+					break;
+					}
+				else if (currentPosition.check(m, DIR_SOUTH) == 2 || currentPosition.check(m, DIR_SOUTH) == 0)
+					{
+					 wall = DIR_SOUTH;
+					 break;
+					}
 			}
 		}
 	}
