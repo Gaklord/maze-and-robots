@@ -48,12 +48,12 @@ public class Maze {
 			sb.append( currentLine );
 		}
 		String data = sb.toString();
-		System.out.println( "Data: " + data );
-		for(i = 0; i < 11; i++)
+		//System.out.println( "Data: " + data );
+		for(i = 0; i < 9; i++)
 		{
-			for(j = 0; j < 11; j++)
+			for(j = 0; j < 9; j++)
 			{
-				ver[i][j] = data.charAt(i*11+j);  
+				ver[i][j] = data.charAt(i*9+j);  
 				System.out.print(ver[i][j]);
 			}
 			System.out.println();
@@ -68,9 +68,9 @@ public class Maze {
 		
 		position entrance, fail;
 		
-		for(i = 0; i < 11; i++)
+		for(i = 0; i < 9; i++)
 		{
-			for(j = 0; j < 11; j++)
+			for(j = 0; j < 9; j++)
 			{
 				if(ver[i][j] == 'o')
 				{
@@ -91,9 +91,9 @@ public class Maze {
 		
 		position exit, fail;
 		
-		for(i = 0; i < 11; i++)
+		for(i = 0; i < 9; i++)
 		{
-			for(j = 0; j < 11; j++)
+			for(j = 0; j < 9; j++)
 			{
 				if(ver[i][j] == 'o')
 				{
@@ -109,7 +109,7 @@ public class Maze {
 		return(fail = new position());
 	}
 	
-	private char[][] ver = new char[11][11];
+	private char[][] ver = new char[9][9];
 	
 	public static final int POINT_ENTRANCE = 0;
 	public static final int POINT_SPACE = 1;
@@ -118,7 +118,7 @@ public class Maze {
 	
 	public int CheckPos(int x, int y)
 	{
-		if(x < 0 || x > 10 || y < 0 || y > 10)
+		if(x < 0 || x > 8 || y < 0 || y > 8)
 		{
 			System.err.println("Out of bounds, fuck you");
 			return -1; 

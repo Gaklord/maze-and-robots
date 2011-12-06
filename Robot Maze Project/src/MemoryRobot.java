@@ -15,8 +15,9 @@ public  class MemoryRobot extends robot {
 		int x = 1;
 		position memorypos = new position(); 
 		long signout = System.currentTimeMillis();
-		memory.push(currentPosition);
-		lastresort.push(currentPosition);
+		System.out.println(m.CheckPos(2, 5));
+		memory.push(new position(currentPosition.getx(), currentPosition.gety()));
+		lastresort.push(new position(currentPosition.getx(), currentPosition.gety()));
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
 			memorypos = memory.peek();
@@ -26,7 +27,7 @@ public  class MemoryRobot extends robot {
 				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()+1);
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
 				{
-					memory.push(currentPosition); 
+					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(0, 1);
 					x = 0;
 				}
@@ -37,7 +38,7 @@ public  class MemoryRobot extends robot {
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
 
 				{
-					memory.push(currentPosition); 
+					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(1, 0);
 					x = 0;
 				}
@@ -48,7 +49,7 @@ public  class MemoryRobot extends robot {
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
 
 				{
-					memory.push(currentPosition); 
+					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(0, -1);
 					x = 0;
 				}
@@ -60,19 +61,17 @@ public  class MemoryRobot extends robot {
 				if((futurePosition != memorypos) && (futurePosition != lastPosition))
 
 				{
-					memory.push(currentPosition); 
+					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(-1, 0);
 					x = 0;
 				}
-				break;
 			}
 			else
 			{
-				lastresort.push(currentPosition);
+				lastresort.push(new position(currentPosition.getx(), currentPosition.gety()));
 				memory.pop();
 				currentPosition.setPosition(memory.peek().getx(), memory.peek().gety());
 			}
-			
 			x = 1;
 			
 		
