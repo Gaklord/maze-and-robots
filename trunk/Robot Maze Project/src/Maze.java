@@ -95,7 +95,7 @@ public class Maze {
 		{
 			for(j = 0; j < 11; j++)
 			{
-				if(ver[i][j] == 'o')
+				if(ver[i][j] == 'x')
 				{
 					exit = new position(i, j);
 					return exit;
@@ -125,13 +125,13 @@ public class Maze {
 		}
 	
 		if(ver[y][x] == 'o')
-			return 0;
+			return POINT_ENTRANCE;
 		else if (ver[y][x] == ' ')
-			return 1;
+			return POINT_SPACE;
 		else if (ver[y][x] == '*')
-			return 2;
+			return POINT_WALL;
 		else if (ver[y][x] == 'x')
-			return 3;
+			return POINT_EXIT;
 		else
 			System.err.println("Not valid Character, Fuck you.");
 			return -2;

@@ -16,11 +16,12 @@ public  class MemoryRobot extends robot {
 		int x = 1;
 		final position memorypos = currentPosition;  
 		long signout = System.currentTimeMillis();
-		System.out.println(m.CheckPos(2, 5));
+		//System.out.println(m.CheckPos(2, 5));
 		memory.add(new position(currentPosition.getx(), currentPosition.gety()));
 		lastresort.add(new position(currentPosition.getx(), currentPosition.gety()));
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{ 
+			System.out.println(currentPosition.getx() + " " + currentPosition.gety());
 			lastPosition = lastresort.get(lastresort.size()-1);
 			if(m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3)
 			{
