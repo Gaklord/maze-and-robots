@@ -9,7 +9,7 @@ public class GrandPulse {
 		//Hand.Move(Findme);
 		RightHandMoveRobot Touma = new RightHandMoveRobot(Findme);
 		Touma.Move(Findme);
-		System.out.println("/n/nOH GOD WE MADE IT OUT OF THE LOOPS");
+		System.out.println("\n\nOH GOD WE MADE IT OUT OF THE LOOPS");
 	}
 
 }
