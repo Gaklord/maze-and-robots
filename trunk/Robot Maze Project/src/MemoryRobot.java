@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack; 
 
 
@@ -13,64 +14,63 @@ public  class MemoryRobot extends robot {
 	public void Move(Maze m)
 	{
 		int x = 1;
-		position memorypos = new position(); 
+		final position memorypos = currentPosition;  
 		long signout = System.currentTimeMillis();
 		System.out.println(m.CheckPos(2, 5));
-		memory.push(new position(currentPosition.getx(), currentPosition.gety()));
-		lastresort.push(new position(currentPosition.getx(), currentPosition.gety()));
+		memory.add(new position(currentPosition.getx(), currentPosition.gety()));
+		lastresort.add(new position(currentPosition.getx(), currentPosition.gety()));
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
-		{
-			memorypos = memory.peek();
-			lastPosition = lastresort.peek();
+		{ 
+			lastPosition = lastresort.get(lastresort.size()-1);
 			if(m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()+1);
-				if((futurePosition != memorypos) && (futurePosition != lastPosition))
+				if(checkstack(memory, futurePosition) == true && checkstack(lastresort, futurePosition) == true)
 				{
-					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
+					memory.add(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(0, 1);
 					x = 0;
 				}
 			}
-			else if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 3)
+			if(m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx()+1, currentPosition.gety());
-				if((futurePosition != memorypos) && (futurePosition != lastPosition))
+				if(checkstack(memory, futurePosition) == true && checkstack(lastresort, futurePosition) == true)
 
 				{
-					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
+					memory.add(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(1, 0);
 					x = 0;
 				}
 			}
-			else if(m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 3)
+			if(m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx(), currentPosition.gety()-1);
-				if((futurePosition != memorypos) && (futurePosition != lastPosition))
+				if(checkstack(memory, futurePosition) == true && checkstack(lastresort, futurePosition) == true)
 
 				{
-					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
+					memory.add(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(0, -1);
 					x = 0;
 				}
 				
 			}
-			else if(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 3)
+			if(m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 1 || m.CheckPos(currentPosition.getx()-1, currentPosition.gety()) == 3)
 			{
 				futurePosition.setPosition(currentPosition.getx()-1, currentPosition.gety());
-				if((futurePosition != memorypos) && (futurePosition != lastPosition))
+				if(checkstack(memory, futurePosition) == true && checkstack(lastresort, futurePosition) == true)
 
 				{
-					memory.push(new position(currentPosition.getx(), currentPosition.gety())); 
+					memory.add(new position(currentPosition.getx(), currentPosition.gety())); 
 					currentPosition.modify(-1, 0);
 					x = 0;
 				}
 			}
-			else
+			if(x == 1)
 			{
-				lastresort.push(new position(currentPosition.getx(), currentPosition.gety()));
-				memory.pop();
-				currentPosition.setPosition(memory.peek().getx(), memory.peek().gety());
+				lastresort.add(new position(currentPosition.getx(), currentPosition.gety()));
+				memory.remove(memory.size()-1);
+				currentPosition.setPosition(memory.get(memory.size()-1).getx(), memory.get(memory.size()-1).gety());
 			}
 			x = 1;
 			
@@ -84,18 +84,23 @@ public  class MemoryRobot extends robot {
 
 	}
 	
-	private Boolean checkstack()
+	private Boolean checkstack(ArrayList<position> j, position p)
 	{
-		if(currentPosition == memory.peek())
-		return true;
-		else
-		return false;
 		
+		for(int i = 0; i < j.size()-1; i++)
+		{
+			if(j.get(i).getx() == p.getx() && j.get(i).gety() == p.gety())
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 	
 	
-	private Stack<position> memory = new Stack<position>();
-	private Stack<position> lastresort = new Stack<position>();
+	private ArrayList<position> memory = new ArrayList<position>();
+	private ArrayList<position> lastresort = new ArrayList<position>();
 	
 }
