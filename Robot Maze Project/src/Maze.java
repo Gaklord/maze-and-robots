@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -30,7 +29,6 @@ public class Maze {
 				try {
 					txt.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -66,7 +64,7 @@ public class Maze {
 	{
 		int i, j;
 		
-		position entrance, fail;
+		position entrance;
 		
 		for(i = 0; i < 11; i++)
 		{
@@ -81,15 +79,15 @@ public class Maze {
 			}
 			
 		}
-		System.err.println("No entrance found, Fuck you");
+		System.err.println("No entrance found. Some maze you got here, buddy.");
 		System.exit(1);
-		return(fail = new position());
+		return(entrance = new position());
 	}
 	public position finde()
 	{
 		int i, j;
 		
-		position exit, fail;
+		position exit;
 		
 		for(i = 0; i < 11; i++)
 		{
@@ -104,9 +102,9 @@ public class Maze {
 			}
 			
 		}
-		System.err.println("No exit found, Fuck you");
+		System.err.println("No exit found. Now you're just evil.");
 		System.exit(1);
-		return(fail = new position());
+		return(exit = new position());
 	}
 	
 	private char[][] ver = new char[11][11];
@@ -120,7 +118,7 @@ public class Maze {
 	{
 		if(x < 0 || x > 10 || y < 0 || y > 10)
 		{
-			System.err.println("Out of bounds, fuck you");
+			System.err.println("Out of bounds. You've fallen into Valhala.");
 			return -1; 
 		}
 	
@@ -133,7 +131,7 @@ public class Maze {
 		else if (ver[y][x] == 'x')
 			return POINT_EXIT;
 		else
-			System.err.println("Not valid Character, Fuck you.");
+			System.err.println("Not valid Character. Get that guy outa here.");
 			return -2;
 	}
 }

@@ -1,4 +1,3 @@
-import java.util.Map;
 import java.util.Random;
 public class RandomRobot extends robot {
 
@@ -60,7 +59,8 @@ public class RandomRobot extends robot {
 			}
 			Moves++;
 		}
-		System.out.println("Took Memory Robot " + ((System.currentTimeMillis() - signout) / 1000 + "Seconds!"));
+		System.out.println("\nRandom Robot has exited the maze");
+		System.out.println("Took Random Robot " + ((System.currentTimeMillis() - signout) / 1000 + "Seconds!"));
 		System.out.println("Took " + Moves + " Moves");
 	}
 }

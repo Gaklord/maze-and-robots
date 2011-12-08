@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Stack; 
 
 
 public  class MemoryRobot extends robot {
@@ -14,14 +13,12 @@ public  class MemoryRobot extends robot {
 	public void Move(Maze m)
 	{
 		int x = 1;
-		final position memorypos = currentPosition;  
 		long signout = System.currentTimeMillis();
-		//System.out.println(m.CheckPos(2, 5));
 		memory.add(new position(currentPosition.getx(), currentPosition.gety()));
 		lastresort.add(new position(currentPosition.getx(), currentPosition.gety()));
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{ 
-			System.out.println(currentPosition.getx() + " " + currentPosition.gety());
+			//System.out.println(currentPosition.getx() + " " + currentPosition.gety()); // this is a location debugger
 			lastPosition = lastresort.get(lastresort.size()-1);
 			if(m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 1 || m.CheckPos(currentPosition.getx(), currentPosition.gety()+1) == 3)
 			{
@@ -77,11 +74,8 @@ public  class MemoryRobot extends robot {
 			
 		
 		}
-		System.out.println("OH MY GOD WE MADE IT I THINK");
+		System.out.println("\nMemory Robot has exited the maze");
 		System.out.println("Took Memory Robot " + ((System.currentTimeMillis() - signout) / 1000 + " Seconds!")); 
-		System.out.println(currentPosition.getx() + " " + currentPosition.gety());
-		position end = m.finde();
-		System.out.println(end.getx() + " " + end.gety());
 
 	}
 	
