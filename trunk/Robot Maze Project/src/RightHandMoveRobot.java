@@ -1,4 +1,5 @@
-public class RightHandMoveRobot extends robot {
+public class RightHandMoveRobot extends robot 
+{
 	private int wall = 5;
 	public RightHandMoveRobot(Maze m)
 	{
@@ -7,6 +8,8 @@ public class RightHandMoveRobot extends robot {
 	}
 	public void Move(Maze m)
 	{
+		long signout = System.currentTimeMillis();
+
 		position currentPosition = m.findb();
 		if (currentPosition.getx() == 1) //this sets the initial direction for the robot
 			 direction = DIR_SOUTH;
@@ -54,7 +57,7 @@ public class RightHandMoveRobot extends robot {
 				}
 			}
 			}
-			while (wall == 5) //sets the position of the wall relative to robot's position, should only run once ever
+			while (wall == 5) //sets the position of the wall relative to robot's position
 				switch (direction)
 				{
 				case (DIR_NORTH):if (m.CheckPos(currentPosition.getx()+1, currentPosition.gety()) == 2) wall = DIR_EAST;else currentPosition.modify(1, 0);break;
@@ -63,10 +66,9 @@ public class RightHandMoveRobot extends robot {
 				case (DIR_WEST):if (m.CheckPos(currentPosition.getx(), currentPosition.gety()-1) == 2) wall = DIR_NORTH;else currentPosition.modify(0, -1);break;
 				default:System.err.println("HERE BE DRAGONS"); System.exit(-82);//self terminates if robot is looking a wrong way
 				}
-			System.out.print(currentPosition.getx());
-			System.out.println(" " + currentPosition.gety());
-			//System.out.println(m.CheckPos(7,8));
-			//System.out.println(m.CheckPos(7,8));
+			//System.out.print(currentPosition.getx());        //these are location debuggers
+			//System.out.println(" " + currentPosition.gety());
+
 			switch (wall)
 			{
 			case (DIR_NORTH):
@@ -123,18 +125,11 @@ public class RightHandMoveRobot extends robot {
 					}
 			}
 		}
+		System.out.println("\nRight Hand Robot has exited the maze");
+		System.out.println("Took Right Hand Robot " + ((System.currentTimeMillis() - signout) / 1000 + " Seconds!")); 
 	}
 	
-	private void check_move()
-	{
-		
-		
-	}
-	private void move(int direction)
-	{
-		
-		
-	}
+	@SuppressWarnings("unused")
 	private void updateDirection()
 	{
 		direction = getDirection( lastPosition, currentPosition );
@@ -154,16 +149,4 @@ public class RightHandMoveRobot extends robot {
 		System.err.println("I'm Stuck!");
 		return -1; // both positions are the same
 	}
-	private boolean isEnd()
-	{
-		//if (curPos == end)
-			//return true;
-	//else
-		return false;
-	}
-	//private position updatePos(Maze m)
-	{
-		 
-	}
-	
 }
