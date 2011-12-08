@@ -20,7 +20,7 @@ public class RandomRobot extends robot {
 
 		while(m.CheckPos(currentPosition.getx(), currentPosition.gety()) != 3)
 		{
-			thatway = pie.nextInt(3);
+			thatway = pie.nextInt(4);
 			
 			switch(thatway)
 			{
@@ -50,7 +50,7 @@ public class RandomRobot extends robot {
 					if(m.CheckPos(futurePosition.getx(), futurePosition.gety()) == 1 || m.CheckPos(futurePosition.getx(), futurePosition.gety()) == 3)
 						currentPosition.modify(0, -1);
 					else
-						futurePosition.modify(0, -1);
+						futurePosition.modify(0, 1);
 					break;
 				default:
 					System.out.println("Random You have failed me for the last time... AGAIN!");
