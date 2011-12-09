@@ -4,72 +4,64 @@ public class TowerOfHanoi4 {
 
     // stacks[0], stacks[1] and stacks[2] are the three stacks.
     static Stack<Integer>[] towers;
-
-    static HanoiGUI hanoiGUI;
+    private static int disks;
 
     public static void main (String[] argv)
     {
-        // A 4-disk puzzle:
-        System.out.println ("4-Disk solution: ");
-	solveHanoi (3, 0, 1);
+    	disks = 5;
+    	disks -= 1;
+        // ask user for number of disks and solve the puzzle
+        System.out.println ((disks+1) + "-Disk solution: ");
+        prepare(disks , 0, 2);
     }
 
 
-    static void solveHanoi (int n, int i, int j)
+    static void prepare (int disk, int starTower, int endTower)
     {
-        // Create the three stacks.
+    // Create the three stacks.
 	towers = new Stack [3];
-	for (int k=0; k<3; k++) {
-	    towers[k] = new Stack<Integer>();
+	for (int n=0; n<3; n++) 
+	{
+		towers[n] = new Stack<Integer>();
 	}
 
-        // Put disks 0,...,n on stack 0.
-	for (int k=n; k>=0; k--) {
+    // Put disks 0,...,n on stack 0.
+	for (int k=disk; k>=0; k--) {
 	    towers[0].add (k);
 	}
 
-        // Print the initial stack.
-	printTowers ();
-
-        // GUI. Note: n+1 = # disks. We will pass in the stacks.
-        hanoiGUI = new HanoiGUI (towers, n+1);
-
-        // Now solve recursively. Note: this is the method below.
-	solveHanoiRecursive (n, i, j);
+	solve (disk, starTower, endTower);
     }
     
 
-    static void solveHanoiRecursive (int n, int i, int j)
+    static void solve (int disk, int fromTower, int toTower)
     {
 	// Bottom-out.
-	if (n == 0) {
-	    move (0, i, j);
+	if (disk == 0) {
+	    move (0, fromTower, toTower);
 	    return;
 	}
-	int k = other (i, j);
+	int spareTower = other (fromTower, toTower);
         
-	solveHanoiRecursive (n-1, i, k);   // Step 1.
-	move (n, i, j);                    // Step 2.
-	solveHanoiRecursive (n-1, k, j);   // Step 3.
+	solve (disk-1, fromTower, spareTower);   // Step 1.
+	move (disk, fromTower, toTower);                    // Step 2.
+	solve (disk-1, spareTower, toTower);   // Step 3.
     }
 
 
-    static void move (int n, int i, int j)
+    static void move (int disk, int sourceTower, int desTower)
     {
-        // Pull out the top disk on stack i.
-	int topVal = towers[i].pop();
-        // Put it on stack j.
-	towers[j].push (topVal);
+        // Pull out the top disk from source tower.
+	int topDisk = towers[sourceTower].pop();
+        // Put it on stack destination tower.
+	towers[desTower].push (topDisk);
         // Print status.
-        System.out.println ("Towers after moving " + n + " from tower " + i + " to tower " + j);
-	printTowers ();
+        System.out.println ("Towers after moving " + (disk+1) + " from tower " + sourceTower + " to tower " + desTower);
+	printTowers();
 
-        // This method will handle re-drawing the towers/disks.
-        hanoiGUI.updateGUI ();
-
-        // Pause execution for animation effect.
+        // Pause for effect.
         try {
-            Thread.sleep (1000);
+            Thread.sleep (300);
         }
         catch (InterruptedException e) {
         }
@@ -98,22 +90,25 @@ public class TowerOfHanoi4 {
             return 1;
         }
 
-        // We shouldn't reach here.
+        // HERE BE DRAGONS
         return -1;
     }
 
 
-    static void printTowers ()
+    public static void printTowers ()
     {
-	for (int i=0; i<towers.length; i++) {
-	    System.out.print ("Tower " + i + ": ");
-	    if ( ! towers[i].isEmpty() ) {
-		for (Integer I: towers[i]) {
-		    System.out.print (" " + I);
-		}
-	    }
-	    System.out.println ();
-	}
+    	for (int i=0; i<towers.length; i++) 
+    	{
+    		System.out.print ("Tower " + (i+1) + ": ");
+    		if ( ! towers[i].isEmpty() ) 
+    			{
+    			for (Integer I: towers[i]) 
+    				{
+    				System.out.print (" " + (I+1));
+    				}
+    			}	
+    		System.out.println ();
+    	}
     }
 
 }
