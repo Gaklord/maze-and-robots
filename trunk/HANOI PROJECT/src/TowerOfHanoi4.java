@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.Scanner;
+import java.lang.String;
 
 public class TowerOfHanoi4 {
 
@@ -8,10 +10,16 @@ public class TowerOfHanoi4 {
 
     public static void main (String[] argv)
     {
-    	disks = 5;
+    	Scanner IN = new Scanner(System.in);
+    	
+    	System.out.println("Please enter the number of discs to use");
+      	int Nof = IN.nextInt();
+   
+      	disks = Nof;
     	disks -= 1;
         // ask user for number of disks and solve the puzzle
         System.out.println ((disks+1) + "-Disk solution: ");
+        
         prepare(disks , 0, 2);
     }
 
